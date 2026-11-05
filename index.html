@@ -18,10 +18,13 @@
                 <p class="text-red-600 text-lg font-bold ">Promos</p>
             </div>
             <div class="w-[50%] bg-gray-200 rounded-md px-1.5 mx-4">
-                <input class="w-[85%] h-8 focus:outline-none focus:ring-0 px-2.5 py-1" type="text" placeholder="Search fo product">
+                <input id="filterInput" class="w-[85%] h-8 focus:outline-none focus:ring-0 px-2.5 py-1" type="text" placeholder="Search fo product">
             </div>
-            <div class="flex items-center w-[25%] justify-around">
-                <p id="basket_btn" class="text-lg font-bold  px-4 py-2 rounded-lg border border-white hover:border hover:border-gray-400 hover:bg-gray-100 cursor-pointer">My Products</p>
+            <div class="flex items-center w-[25%] justify-around ">
+                <p id="basket_btn" class="text-lg font-bold  px-4 py-2 rounded-lg border border-white hover:border hover:border-gray-400 hover:bg-gray-100 cursor-pointer static">
+                    My Products
+                    <div id="bascket_quantity" class="px-1 py-0.5 bg-red-600 relative bottom-3 right-13 rounded-2xl text-white flex items-center justify-center font-bold"></div>
+                </p>
                 <p class="text-lg font-bold text-red-600"><span id="product_montant">0</span>DH</p>
             </div>
         </nav>
@@ -32,19 +35,7 @@
                 <h2 class="text-4xl font-extrabold">Promos</h2>
                 <p class="text-gray-500"><span>1000</span> products</p>
             </div>
-            <div class="w-full flex flex-wrap gap-2.5">
-                <p class="w-fit px-4 py-1.5 bg-gray-100 rounded-2xl text-gray-500">Produits laitiers, oeufs, fromages</p>
-                <p class="w-fit px-4 py-1.5 bg-gray-100 rounded-2xl text-gray-500">Produits laitiers, oeufs, fromages</p>
-                <p class="w-fit px-4 py-1.5 bg-gray-100 rounded-2xl text-gray-500">Produits laitiers, oeufs, fromages</p>
-                <p class="w-fit px-4 py-1.5 bg-gray-100 rounded-2xl text-gray-500">Produits laitiers, oeufs, fromages</p>
-                <p class="w-fit px-4 py-1.5 bg-gray-100 rounded-2xl text-gray-500">Produits laitiers, oeufs, fromages</p>
-                <p class="w-fit px-4 py-1.5 bg-gray-100 rounded-2xl text-gray-500">Produits laitiers, oeufs, fromages</p>
-                <p class="w-fit px-4 py-1.5 bg-gray-100 rounded-2xl text-gray-500">Produits laitiers, oeufs, fromages</p>
-                <p class="w-fit px-4 py-1.5 bg-gray-100 rounded-2xl text-gray-500">Produits laitiers, oeufs, fromages</p>
-                <p class="w-fit px-4 py-1.5 bg-gray-100 rounded-2xl text-gray-500">Produits laitiers, oeufs, fromages</p>
-                <p class="w-fit px-4 py-1.5 bg-gray-100 rounded-2xl text-gray-500">Produits laitiers, oeufs, fromages</p>
-                <p class="w-fit px-4 py-1.5 bg-gray-100 rounded-2xl text-gray-500">Produits laitiers, oeufs, fromages</p>
-                <p class="w-fit px-4 py-1.5 bg-gray-100 rounded-2xl text-gray-500">Produits laitiers, oeufs, fromages</p>
+            <div id="category" class="w-full flex flex-wrap gap-2.5">
             </div>
         </div>
         <div class="w-full h-fit flex items-center justify-between py-6">
@@ -84,90 +75,20 @@
             </div>
         </div>
         <div id="product_cards" class="w-full h-fit grid grid-cols-5 gap-8 py-10 static">
-            <!-- <article class="flex flex-col w-full h-120 shadow-2xl bg-gray-200 rounded-2xl overflow-hidden p-6 border border-gray-300">
-                <img class="w-full h-[50%] rounded-lg" src="https://cdn.auchan.fr/media/A0219900101000063585PRIMARY_0x0/B2CD/?width=2048&height=2048&fit=pad&quality=75&format=rw" alt="">
-                <div class="h-[25%]">
-                    <div class="w-full flex justify-center py-3">
-                        <span>*****</span>
-                    </div>
-                    <div class="flex gap-1.5 items-end flex-wrap wrap-break-word">
-                        <h3 class="text-lg font-bold max-w-full">BARILLA</h3>
-                        <p>Penne rigate</p>
-                    </div>
-                </div>
-                <p class="w-fit px-3.5 py-1 bg-gray-100 rounded-lg text-gray-500 border border-gray-300"><span>500</span>g</p>
-                <div class="">
-                    <div class="w-full flex flex-col items-center">
-                        <p class="font-bold text-green-700">By drive or delivery</p>
-                        <Button class="w-fit px-8 py-2 bg-red-600 hover:bg-red-400 rounded-2xl text-gray-100 font-bold">Show price</Button>
-                    </div>
-                </div>
-            </article>
-            <article class="flex flex-col w-full h-120 shadow-2xl bg-gray-200 rounded-2xl overflow-hidden p-6 border border-gray-300">
-                <img class="w-full h-[50%] rounded-lg" src="https://cdn.auchan.fr/media/A0219900101000063585PRIMARY_0x0/B2CD/?width=2048&height=2048&fit=pad&quality=75&format=rw" alt="">
-                <div class="h-[25%]">
-                    <div class="w-full flex justify-center py-3">
-                        <span>*****</span>
-                    </div>
-                    <div class="flex gap-1.5 items-end flex-wrap wrap-break-word">
-                        <h3 class="text-lg font-bold max-w-full">BARILLA</h3>
-                        <p>Penne rigate</p>
-                    </div>
-                </div>
-                <p class="w-fit px-3.5 py-1 bg-gray-100 rounded-lg text-gray-500 border border-gray-300"><span>500</span>g</p>
-                <div class="">
-                    <div class="w-full flex flex-col items-center">
-                        <p class="font-bold text-green-700">By drive or delivery</p>
-                        <Button class="w-fit px-8 py-2 bg-red-600 hover:bg-red-400 rounded-2xl text-gray-100 font-bold">Show price</Button>
-                    </div>
-                </div>
-            </article>
-            <article class="flex flex-col w-full h-120 shadow-2xl bg-gray-200 rounded-2xl overflow-hidden p-6 border border-gray-300">
-                <img class="w-full h-[50%] rounded-lg" src="https://cdn.auchan.fr/media/A0219900101000063585PRIMARY_0x0/B2CD/?width=2048&height=2048&fit=pad&quality=75&format=rw" alt="">
-                <div class="h-[25%]">
-                    <div class="w-full flex justify-center py-3">
-                        <span>*****</span>
-                    </div>
-                    <div class="flex gap-1.5 items-end flex-wrap wrap-break-word">
-                        <h3 class="text-lg font-bold max-w-full">BARILLA</h3>
-                        <p>Penne rigate</p>
-                    </div>
-                </div>
-                <p class="w-fit px-3.5 py-1 bg-gray-100 rounded-lg text-gray-500 border border-gray-300"><span>500</span>g</p>
-                <div class="">
-                    <div class="w-full flex flex-col items-center">
-                        <p class="font-bold text-green-700">By drive or delivery</p>
-                        <Button class="w-fit px-8 py-2 bg-red-600 hover:bg-red-400 rounded-2xl text-gray-100 font-bold">Show price</Button>
-                    </div>
-                </div>
-            </article> -->
+            
         </div>
-        <div id="basket_popup" class="hidden absolute w-full h-full top-0 left-0 flex justify-end fixed bg-[#dbdbdb]/15 backdrop-blur-[6px] backdrop-saturate-[200%] border border-[#dbdbdb]/1 rounded-[0px] shadow-[0_8px_32px_0_rgba(0,0,0,0)]">
-            <div class=" w-120 h-full bg-gray-100 opacity-100">
-                <div class="flex justify-between items-center w-full h-fit px-8 py-5 sticky shadow rounded-b-2xl">
+        <div id="basket_popup" class="hidden fixed inset-0 z-50 flex justify-end bg-[#dbdbdb]/15 backdrop-blur-[6px] backdrop-saturate-200">
+            <div class="w-120 h-screen max-h-screen bg-gray-100 opacity-100 flex flex-col">
+                <div class="flex justify-between items-center w-full px-8 py-5 shadow rounded-b-2xl bg-gray-100 z-10 shrink-0">
                     <h3 class="font-bold text-lg text-red-700">My Basket</h3>
                     <p id="close_popup" class="flex justify-center items-center w-8 h-8 pb-1.5 text-red-600 rounded-2xl bg-gray-200 text-2xl cursor-pointer font-bold">x</p>
                 </div>
-                <div id="basket_div" class="w-full p-5 flex flex-col gap-3  ">
-                    <!-- <article class="basket_cards w-full grid grid-cols-4 bg-gray-200 rounded-lg p-3">
-                        <img class="w-auto h-30 rounded-sm" src="/img/download (1).webp" alt="">
-                        <div class="flex flex-col pl-3">
-                            <h2 class="text-lg font-bold">Name</h2>
-                            <p class="text-gray-500">description</p>
-                        </div>
-                        <div class="w-full col-span-2 flex flex-col justify-center items-end gap-3">
-                            <div class="flex items-center gap-2 text-green-800 bg-green-200 rounded-2xl px-3 ">
-                                <h2 class="text-lg font-bold">test</h2>
-                                <p>testttt</p>
-                            </div>
-                            <p class="text-lg text-red-600 font-bold"><span>0</span>DH</p>
-                            <div class="flex gap-1 ">
-                                <div id="minus_btn" class="w-12 h-8 flex items-center justify-center rounded-2xl bg-gray-800 cursor-pointer"><img class="w-auto h-4" src="icons/trash-can.png" alt="icon"></div>
-                                <p class="border border-gray-400 flex items-center justify-center px-3 rounded-lg">0</p>
-                                <div id="plus_btn" class="flex justify-center items-center w-12 h-8 pb-1.5 text-red-600 rounded-2xl bg-gray-100 border border-gray-400 text-2xl cursor-pointer font-bold">+</div>
-                            </div>
-                        </div>
-                    </article> -->
+                
+                <div id="basket_div" class="w-full p-5 flex flex-col gap-3 overflow-y-auto flex-1">
+                    <!-- cards ... -->
+                </div>
+                <div class="w-full h-fit bg-gray-200 p-3.5 flex justify-end items-center rounded-t-2xl ">
+                    <button class="px-6 py-3 bg-red-700 rounded-2xl text-lg font-bold text-gray-100 hover:bg-red-500" type="submit">Buy All</button>
                 </div>
             </div>
         </div>

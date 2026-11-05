@@ -4,30 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./CSS/output.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Admin Dashboard - Products</title>
 </head>
-<body>
-    <header class="w-full h-20 shadow">
-        <nav class="wfull h-full flex items-center mx-8 ">
-            <div class="flex items-center w-[25%] justify-around">
-                <img class="w-40 h-auto" src="img/Mart Logo.png" alt="Logo">
-                <div class="flex items-center gap-x-2 border border-white rounded-lg px-2.5 py-1.5 mx-3 cursor-pointer hover:border hover:border-gray-400 hover:bg-gray-100">
-                    <label for="menu-toggle" class="text-2xl text-gray-500">&#9776;</label>
-                    <p class="text-lg font-bold">Rayons</p>
-                </div>
-                <p class="text-red-600 text-lg font-bold ">Promos</p>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Header -->
+    <header class="w-full h-20 shadow bg-white fixed top-0 left-0 z-50">
+        <nav class="w-full h-full flex items-center justify-between px-8">
+            <div class="flex items-center gap-4">
+                <img class="w-32 h-auto" src="img/Mart Logo.png" alt="Logo">
+                <h1 class="text-xl font-bold text-gray-700">Admin Dashboard</h1>
             </div>
-            <div class="w-[50%] bg-gray-200 rounded-md px-1.5 mx-4">
-                <input class="w-[85%] h-8 focus:outline-none focus:ring-0 px-2.5 py-1" type="text" placeholder="Search fo product">
-            </div>
-            <div class="flex items-center w-[25%] justify-around">
-                <p class="text-lg font-bold  px-4 py-2 rounded-lg border border-white hover:border hover:border-gray-400 hover:bg-gray-100">My Products</p>
-                <p class="text-lg font-bold text-red-600"><span>0</span>DH</p>
+            <div class="flex items-center gap-4">
+                <span class="font-semibold text-gray-600">Admin</span>
+                <div class="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center font-bold">A</div>
             </div>
         </nav>
     </header>
-    <main class="">
+
+    <main class="pt-28 px-10 pb-10">
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <h2 class="text-2xl font-extrabold text-gray-800">Manage Products</h2>
+                <p class="text-gray-500 text-sm">Here you can view and manage all existing products.</p>
+            </div>
+            <button class="px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl shadow transition">
+                + Add New Product
+            </button>
+        </div>
+        <div class="flex justify-end items-center mb-6">
+            <div class="w-72 bg-white rounded-lg border border-gray-300 px-3 py-1.5 shadow-sm">
+                <input id="filterInput" class="w-full focus:outline-none text-sm" type="text" placeholder="Search product by name...">
+            </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-200">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50 border-b border-gray-200 text-gray-600 text-sm uppercase tracking-wider">
+                            <th class="py-4 px-6">Product</th>
+                            <th class="py-4 px-6">Category</th>
+                            <th class="py-4 px-6">Price</th>
+                            <th class="py-4 px-6">Details</th>
+                            <th class="py-4 px-6 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dashboard_products_list" class="divide-y divide-gray-200 text-gray-700">
+                        <!-- <tr class="hover:bg-gray-50 transition">
+                            <td class="py-4 px-6 flex items-center gap-4">
+                                <img class="w-12 h-12 object-cover rounded-lg border" src="img/download (1).webp" alt="Product">
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Smoked Trout</h4>
+                                    <p class="text-xs text-gray-400">ID: 1</p>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-semibold">Poissons & Produits de la mer</span>
+                            </td>
+                            <td class="py-4 px-6 font-bold text-red-600">100 DH</td>
+                            <td class="py-4 px-6 text-sm text-gray-500">100g</td>
+                            <td class="py-4 px-6 text-center">
+                                <div class="flex justify-center gap-2">
+                                    <button class="px-3 py-1.5 bg-blue-50 text-blue-600 hover:bg-blue-100 rounded-lg text-sm font-semibold transition">Edit</button>
+                                    <button class="px-3 py-1.5 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg text-sm font-semibold transition">Delete</button>
+                                </div>
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
     </main>
+    <script type="module" src="js/admin.js"></script>
 </body>
 </html>

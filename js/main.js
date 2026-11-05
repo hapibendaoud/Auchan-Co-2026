@@ -2,18 +2,12 @@ import { cardProducts , my_bascket } from "./products.js";
 import exportData from "./storage.js";
 import basketCard from "./cart.js";
 
-// let my_bascket = [
-//     {
-//         id: 10,
-//         name: "Comtes de Provence Apricots",
-//         description: "Organic apricot jam 65% fruits, cooked in a cauldron with cane sugar, less sweet[cite: 11]",
-//         price: 55,
-//         details: "No Weight",
-//         image: "img/download (10).webp",
-//     }
-// ]
+
 
 const pagination = document.querySelector(".pagination");
+const category_div = document.getElementById("category");
+const filterInput = document.getElementById("filterInput");
+const category_array = [];
 const itemsPerPage = 10; 
 let currentPage = 1;
 let currentFilter = "";
@@ -23,8 +17,11 @@ function checkForData() {
     if (data === null || data === undefined) {
         setTimeout(checkForData, 50);
     } else {
-        // console.log("products: ", data);
-
+        filterInput?.addEventListener('input', e => {
+            currentFilter = e.target.value.toLowerCase();
+            currentPage = 1;
+            render();
+        });
         function render() {
             const filtered = data.filter(p => {
                 const productName = p.name || p.title || "";
@@ -64,11 +61,22 @@ function checkForData() {
         const close_popup = document.getElementById("close_popup");
         basket_btn.addEventListener("click", (e)=>{
             basket_popup.classList.remove("hidden");
+            document.body.classList.add("overflow-hidden");
         });
-        close_popup.addEventListener("click", (e)=>{
-            basket_popup.classList.add("hidden");
-        })
-
+        basket_popup.addEventListener("click", (e) => {
+            if (e.target === basket_popup || e.target === close_popup) {
+                basket_popup.classList.add("hidden");
+                document.body.classList.remove("overflow-hidden");
+            }
+        });
+        data.forEach(element => {
+            if (!category_array.includes(element.category)) {
+                category_array.push(element.category);
+            }
+        });
+        category_array.forEach(element => {
+            category_div.innerHTML += `<p class="w-fit px-4 py-1.5 bg-gray-100 rounded-2xl text-gray-500 cursor-pointer">${element}</p>`;
+        });
 
 
 
