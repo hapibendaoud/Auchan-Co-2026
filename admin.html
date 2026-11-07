@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./CSS/output.css" rel="stylesheet">
+    <title>Admin Dashboard - Products</title>
+</head>
+<body class="bg-gray-100 font-sans min-h-screen">
+
+    <!-- Header -->
+    <header class="w-full h-20 shadow bg-white fixed top-0 left-0 z-50">
+        <nav class="w-full h-full flex items-center justify-between px-8">
+            <div class="flex items-center gap-4">
+                <img class="w-32 h-auto" src="img/Mart Logo.png" alt="Logo">
+                <h1 class="text-xl font-bold text-gray-700">Admin Dashboard</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="font-semibold text-gray-600">Admin</span>
+                <div class="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center font-bold">A</div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-28 px-10 pb-10">
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <h2 class="text-2xl font-extrabold text-gray-800">Manage Products</h2>
+                <p class="text-gray-500 text-sm">Here you can view and manage all existing products.</p>
+            </div>
+            <button id="btn_add_product" class="px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl shadow transition cursor-pointer">
+                + Add New Product
+            </button>
+        </div>
+        <div class="flex justify-end items-center mb-6">
+            <div class="w-72 bg-white rounded-lg border border-gray-300 px-3 py-1.5 shadow-sm">
+                <input id="filterInput" class="w-full focus:outline-none text-sm" type="text" placeholder="Search product by name...">
+            </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-200">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50 border-b border-gray-200 text-gray-600 text-sm uppercase tracking-wider">
+                            <th class="py-4 px-6">Product</th>
+                            <th class="py-4 px-6">Category</th>
+                            <th class="py-4 px-6">Price</th>
+                            <th class="py-4 px-6">Details</th>
+                            <th class="py-4 px-6 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dashboard_products_list" class="divide-y divide-gray-200 text-gray-700">
+                        <!-- Products table -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Popup Modal -->
+    <div id="admin_popup" class="hidden inset-0 fixed z-50 flex items-center justify-center bg-black/40 backdrop-blur-[6px] backdrop-saturate-200">
+        <form id="productForm" class="w-full max-w-4xl bg-red-500 rounded-2xl shadow-xl p-6 mx-4">
+            <div class="flex justify-between items-center px-2 pb-6 border-b border-red-400">
+                <p class="text-2xl text-white font-bold italic">Add New Products</p>
+                <button type="button" id="btn_close_product" class="flex justify-center items-center w-8 h-8 text-red-600 rounded-full bg-gray-200 text-xl font-bold hover:bg-white transition-colors cursor-pointer">
+                    &times;
+                </button>
+            </div>
+
+            <div id="linesContainer" class="flex flex-col gap-4 pt-6">
+                <div class="ligne relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 bg-red-600/40 p-4 rounded-xl border border-red-400">
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-white font-medium text-sm">Product Name</label>
+                        <input id="name" type="text" name="name" placeholder="e.g. Wireless Mouse" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-white font-medium text-sm">Category</label>
+                        <input id="category" type="text" name="Category" placeholder="e.g. Electronics" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-white font-medium text-sm">Price (DH)</label>
+                        <input id="price" type="number" step="0.01" name="price" placeholder="0.00" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-white font-medium text-sm">Details</label>
+                        <input id="details" type="text" name="details" placeholder="Short description" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-white font-medium text-sm">Image URL</label>
+                        <input id="image" type="text" name="image" placeholder="img/download.webp" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center border-t border-red-400 mt-6 pt-6">
+                <button type="submit" class="bg-white hover:bg-gray-100 text-red-600 font-bold px-6 py-2.5 rounded-lg shadow transition-colors cursor-pointer">
+                    Save Product
+                </button>
+            </div>
+        </form>
+    </div>
+    <div id="admin_edite_popup" class="hidden inset-0 fixed z-50 flex items-center justify-center bg-black/40 backdrop-blur-[6px] backdrop-saturate-200">
+        <form id="productForm" class="w-full max-w-4xl bg-red-500 rounded-2xl shadow-xl p-6 mx-4">
+            <div class="flex justify-between items-center px-2 pb-6 border-b border-red-400">
+                <p class="text-2xl text-white font-bold italic">Edite Selected Products</p>
+                <button type="button" id="btn_close_product" class="flex justify-center items-center w-8 h-8 text-red-600 rounded-full bg-gray-200 text-xl font-bold hover:bg-white transition-colors cursor-pointer">
+                    &times;
+                </button>
+            </div>
+
+            <div id="linesContainer" class="flex flex-col gap-4 pt-6">
+                <div class="ligne relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 bg-red-600/40 p-4 rounded-xl border border-red-400">
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-white font-medium text-sm">Product Name</label>
+                        <input id="name" type="text" name="name" placeholder="e.g. Wireless Mouse" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-white font-medium text-sm">Category</label>
+                        <input id="category" type="text" name="Category" placeholder="e.g. Electronics" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-white font-medium text-sm">Price (DH)</label>
+                        <input id="price" type="number" step="0.01" name="price" placeholder="0.00" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-white font-medium text-sm">Details</label>
+                        <input id="details" type="text" name="details" placeholder="Short description" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-white font-medium text-sm">Image URL</label>
+                        <input id="image" type="text" name="image" placeholder="img/download.webp" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center border-t border-red-400 mt-6 pt-6">
+                <button type="submit" class="bg-white hover:bg-gray-100 text-red-600 font-bold px-6 py-2.5 rounded-lg shadow transition-colors cursor-pointer">
+                    Save Edites
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>

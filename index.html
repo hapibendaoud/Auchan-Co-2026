@@ -7,28 +7,34 @@
     <title>Document</title>
 </head>
 <body>
-    <header class="w-full h-20 shadow fixed bg-white">
-        <nav class="wfull h-full flex items-center mx-8 ">
-            <div class="flex items-center w-[25%] justify-around">
-                <img class="w-40 h-auto" src="img/Mart Logo.png" alt="Logo">
-                <div class="flex items-center gap-x-2 border border-white rounded-lg px-2.5 py-1.5 mx-3 cursor-pointer hover:border hover:border-gray-400 hover:bg-gray-100">
-                    <label for="menu-toggle" class="text-2xl text-gray-500">&#9776;</label>
-                    <p class="text-lg font-bold">Rayons</p>
-                </div>
-                <p class="text-red-600 text-lg font-bold ">Promos</p>
+<header class="w-full h-20 shadow fixed top-0 left-0 bg-white z-50">
+    <nav class="w-full h-full flex items-center justify-between px-8">
+
+        <div class="flex items-center w-[25%] gap-x-4">
+            <img class="w-32 h-auto object-contain" src="img/Mart Logo.png" alt="Logo">
+            
+            <div class="flex items-center gap-x-2 border border-transparent rounded-lg px-2.5 py-1.5 cursor-pointer hover:border-gray-300 hover:bg-gray-100 transition-colors">
+                <label for="menu-toggle" class="text-2xl text-gray-500 cursor-pointer">&#9776;</label>
+                <span class="text-lg font-bold">Rayons</span>
             </div>
-            <div class="w-[50%] bg-gray-200 rounded-md px-1.5 mx-4">
-                <input id="filterInput" class="w-[85%] h-8 focus:outline-none focus:ring-0 px-2.5 py-1" type="text" placeholder="Search fo product">
+            
+            <a href="#" class="text-red-600 text-lg font-bold hover:underline">Promos</a>
+        </div>
+        <div class="w-[45%] bg-gray-100 border border-gray-200 rounded-md flex items-center px-3 py-1 ">
+            <input id="filterInput" class="w-full bg-transparent h-9 focus:outline-none text-gray-700 px-1" type="text" placeholder="Search for products">
+        </div>
+        <div class="flex items-center gap-6">
+            <div id="basket_btn" class="flex items-center gap-2 text-lg font-bold px-4 py-2 rounded-lg border border-transparent hover:border-gray-300 hover:bg-gray-100 cursor-pointer transition-colors">
+                <span>My Products</span>
+                <div id="bascket_quantity" class="w-7 h-7 bg-red-600 rounded-full text-white text-sm flex items-center justify-center font-bold">0</div>
             </div>
-            <div class="flex items-center w-[25%] justify-around ">
-                <p id="basket_btn" class="text-lg font-bold  px-4 py-2 rounded-lg border border-white hover:border hover:border-gray-400 hover:bg-gray-100 cursor-pointer static">
-                    My Products
-                    <div id="bascket_quantity" class="px-1 py-0.5 bg-red-600 relative bottom-3 right-13 rounded-2xl text-white flex items-center justify-center font-bold"></div>
-                </p>
-                <p class="text-lg font-bold text-red-600"><span id="product_montant">0</span>DH</p>
+            
+            <div class="text-lg font-bold text-red-600 whitespace-nowrap hover:underline">
+                <span id="product_montant">0</span> DH
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
     <main class="px-10 bg-gray-100 pt-20">
         <div class="w-full h-fit bg-amber-300 flex flex-col justify-center gap-4 py-16">
             <div class="w-full flex items-end gap-5">

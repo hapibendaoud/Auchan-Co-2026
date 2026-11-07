@@ -17,7 +17,9 @@ let Montant = 0;
 
 
 export default function basketCard(myProduct){
-    basket_div.innerHTML = "";
+    if(basket_div){
+        basket_div.innerHTML = "";
+    }
     myProduct.forEach(element => {
         const articale = document.createElement("article");
         articale.dataset.id = element.id;
@@ -46,7 +48,7 @@ export default function basketCard(myProduct){
                         <div id="add_quantity" class="flex justify-center items-center w-12 h-8 pb-1.5 text-red-600 rounded-2xl bg-gray-100 border border-gray-400 text-2xl cursor-pointer font-bold">+</div>
                     </div>
                 </div>`
-        basket_div.append(articale);
+        basket_div?.append(articale);
         articale.addEventListener("click", (e)=>{ 
             const removeBtn = e.target.closest("#remove_btn"); 
             if(removeBtn){

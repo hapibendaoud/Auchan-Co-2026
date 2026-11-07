@@ -2,7 +2,7 @@ import { cardProducts , my_bascket } from "./products.js";
 import exportData from "./storage.js";
 import basketCard from "./cart.js";
 
-
+export const data_from_locale_storige = JSON.parse(localStorage.getItem("data_from_locale_storige")) || [];
 
 const pagination = document.querySelector(".pagination");
 const category_div = document.getElementById("category");
@@ -17,13 +17,16 @@ function checkForData() {
     if (data === null || data === undefined) {
         setTimeout(checkForData, 50);
     } else {
+        if(data_from_locale_storige === null){
+            localStorage.setItem("data_from_locale_storige", JSON.stringify(data));
+        }
         filterInput?.addEventListener('input', e => {
             currentFilter = e.target.value.toLowerCase();
             currentPage = 1;
             render();
         });
         function render() {
-            const filtered = data.filter(p => {
+            const filtered = data_from_locale_storige.filter(p => {
                 const productName = p.name || p.title || "";
                 return productName.toLowerCase().includes(currentFilter);
             });
@@ -33,7 +36,9 @@ function checkForData() {
 
             cardProducts(pageItems);
 
-            pagination.innerHTML = '';
+            if(pagination){
+                pagination.innerHTML = '';
+            }
             const pages = Math.ceil(filtered.length / itemsPerPage);
             
             for (let i = 1; i <= pages; i++) {
@@ -49,7 +54,7 @@ function checkForData() {
                     currentPage = i; 
                     render(); 
                 });
-                pagination.appendChild(btn);
+                pagination?.appendChild(btn);
             }
         }
         
