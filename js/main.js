@@ -64,7 +64,6 @@ function checkForData() {
         render();
         basketCard(my_bascket);
 
-        // Initialize view switcher and pass render to re-draw cards instantly on click
         initViewSwitcher(() => render());
 
         const basket_btn = document.getElementById("basket_btn");

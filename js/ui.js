@@ -1,9 +1,7 @@
 // Current layout mode state ("grid" or "list")
 let currentViewMode = localStorage.getItem("viewMode") || "grid";
 
-/**
- * Initializes the view switcher controls inside #view-switcher-container.
- */
+
 export function initViewSwitcher(onToggleCallback) {
     const container = document.getElementById("view-switcher-container");
     if (!container) return;
