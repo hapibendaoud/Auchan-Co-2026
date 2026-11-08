@@ -12,7 +12,9 @@
     <header class="w-full h-20 shadow bg-white fixed top-0 left-0 z-50">
         <nav class="w-full h-full flex items-center justify-between px-8">
             <div class="flex items-center gap-4">
-                <img class="w-32 h-auto" src="img/Mart Logo.png" alt="Logo">
+                <a href="./index.html">
+                    <img class="w-32 h-auto" src="img/Mart Logo.png" alt="Logo">
+                </a>
                 <h1 class="text-xl font-bold text-gray-700">Admin Dashboard</h1>
             </div>
             <div class="flex items-center gap-4">
@@ -59,7 +61,7 @@
 
     <!-- Popup Modal -->
     <div id="admin_popup" class="hidden inset-0 fixed z-50 flex items-center justify-center bg-black/40 backdrop-blur-[6px] backdrop-saturate-200">
-        <form id="productForm" class="w-full max-w-4xl bg-red-500 rounded-2xl shadow-xl p-6 mx-4">
+        <form id="addProductForm" class="w-full max-w-4xl bg-red-500 rounded-2xl shadow-xl p-6 mx-4">
             <div class="flex justify-between items-center px-2 pb-6 border-b border-red-400">
                 <p class="text-2xl text-white font-bold italic">Add New Products</p>
                 <button type="button" id="btn_close_product" class="flex justify-center items-center w-8 h-8 text-red-600 rounded-full bg-gray-200 text-xl font-bold hover:bg-white transition-colors cursor-pointer">
@@ -103,10 +105,10 @@
         </form>
     </div>
     <div id="admin_edite_popup" class="hidden inset-0 fixed z-50 flex items-center justify-center bg-black/40 backdrop-blur-[6px] backdrop-saturate-200">
-        <form id="productForm" class="w-full max-w-4xl bg-red-500 rounded-2xl shadow-xl p-6 mx-4">
+        <form id="EditeProductForm" class="w-full max-w-4xl bg-red-500 rounded-2xl shadow-xl p-6 mx-4">
             <div class="flex justify-between items-center px-2 pb-6 border-b border-red-400">
                 <p class="text-2xl text-white font-bold italic">Edite Selected Products</p>
-                <button type="button" id="btn_close_product" class="flex justify-center items-center w-8 h-8 text-red-600 rounded-full bg-gray-200 text-xl font-bold hover:bg-white transition-colors cursor-pointer">
+                <button type="button" id="btn_close_edite_product" class="flex justify-center items-center w-8 h-8 text-red-600 rounded-full bg-gray-200 text-xl font-bold hover:bg-white transition-colors cursor-pointer">
                     &times;
                 </button>
             </div>
@@ -115,26 +117,26 @@
                 <div class="ligne relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 bg-red-600/40 p-4 rounded-xl border border-red-400">
                     <div class="flex flex-col gap-1.5">
                         <label class="text-white font-medium text-sm">Product Name</label>
-                        <input id="name" type="text" name="name" placeholder="e.g. Wireless Mouse" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                        <input id="name_edite" type="text" name="name" placeholder="e.g. Wireless Mouse" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
                     </div>
 
                     <div class="flex flex-col gap-1.5">
                         <label class="text-white font-medium text-sm">Category</label>
-                        <input id="category" type="text" name="Category" placeholder="e.g. Electronics" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                        <input id="category_edite" type="text" name="Category" placeholder="e.g. Electronics" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
                     </div>
 
                     <div class="flex flex-col gap-1.5">
                         <label class="text-white font-medium text-sm">Price (DH)</label>
-                        <input id="price" type="number" step="0.01" name="price" placeholder="0.00" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                        <input id="price_edite" type="number" step="0.01" name="price" placeholder="0.00" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
                     </div>
 
                     <div class="flex flex-col gap-1.5">
                         <label class="text-white font-medium text-sm">Details</label>
-                        <input id="details" type="text" name="details" placeholder="Short description" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                        <input id="details_edite" type="text" name="details" placeholder="Short description" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
                     </div>
                     <div class="flex flex-col gap-1.5">
                         <label class="text-white font-medium text-sm">Image URL</label>
-                        <input id="image" type="text" name="image" placeholder="img/download.webp" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                        <input id="image_edite" type="text" name="image" placeholder="img/download.webp" required class="bg-white rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
                     </div>
                 </div>
             </div>
